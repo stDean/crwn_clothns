@@ -1,8 +1,7 @@
 import CollectionPreview from "../collectionpreview/CollectionPreview.component";
-import { collection } from "./collectiondata";
+import { collection } from "../../collectiondata";
 
 const CollectionOverview = () => {
-  console.log(collection);
   return (
     <div>
       {
