@@ -1,9 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
 
-import './App.css';
 import { GlobalStyle } from './globalStyles';
 import { Header } from './components';
-import { HomePage } from './pages';
+import { HomePage, ShopPage } from './pages';
 
 
 function App() {
@@ -13,6 +12,7 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<HomePage />} />
+        <Route path='/shop' element={<ShopPage />} />
       </Routes>
     </>
   );
