@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import { GlobalStyle } from './globalStyles';
 import { Header } from './components';
-import { HomePage, ShopPage } from './pages';
+import { AuthPage, HomePage, ShopPage } from './pages';
 
 
 function App() {
@@ -13,6 +13,7 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/shop' element={<ShopPage />} />
+        <Route path='/signin' element={<AuthPage />} />
       </Routes>
     </>
   );
