@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
-import FormInput from "../formInput/FormInput.component"
-import { SignInContainer, TitleText, SignInForm, SubTitle, Buttons } from "./signin.styles"
+import FormInput from "../formInput/FormInput.component";
+import { SignInContainer, TitleText, SignInForm, SubTitle, Buttons } from "./signin.styles";
 import CustomButton from "../custombutton/CustomButton.component";
 import { signInWithGoogle, auth } from "../../services/firebase";
 
@@ -10,12 +11,23 @@ const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    setEmail("");
+    setPassword("")
+  }
+
+  const handleSignIn = () => {
+    signInWithEmailAndPassword(auth, email, password)
+  }
+
   return (
     <SignInContainer>
       <TitleText>I already have an account</TitleText>
       <SubTitle>Sign in with your email and password.</SubTitle>
 
-      <SignInForm>
+      <SignInForm onSubmit={handleSubmit}>
         <FormInput
           handleChange={({ target }) => setEmail(target.value)}
           type='email'
@@ -37,6 +49,7 @@ const SignIn = () => {
         <Buttons>
           <CustomButton
             type="submit"
+            onClick={handleSignIn}
           >
             Sign In
           </CustomButton>

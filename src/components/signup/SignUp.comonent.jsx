@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
-import FormInput from "../formInput/FormInput.component"
-import { SignInContainer, TitleText, SignInForm, SubTitle } from "./signup.styles"
+import FormInput from "../formInput/FormInput.component";
+import { SignInContainer, TitleText, SignInForm, SubTitle } from "./signup.styles";
 import CustomButton from "../custombutton/CustomButton.component";
+import { auth, createUserProfile } from "../../services/firebase";
 
 const SignUp = () => {
 
@@ -11,19 +13,45 @@ const SignUp = () => {
   const [cfPassword, setCFPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
 
+  const handleSubmit = async e => {
+    e.preventDefault();
+
+    if (password !== cfPassword) {
+      alert("Password don't match!!")
+      return;
+    }
+
+    try {
+      // get the user info on sign up
+      const { user } = await createUserWithEmailAndPassword(auth, email, password)
+
+      // save the user into the db and add the displayName as the otherProps passes
+      createUserProfile(user, { displayName });
+
+      // on submit reset all in fo to an empty string
+      setCFPassword("");
+      setDisplayName("");
+      setEmail("");
+      setPassword("");
+    } catch (error) {
+      alert('error creating user', error.message)
+    }
+
+  }
+
   return (
     <SignInContainer>
       <TitleText>I do not have an account</TitleText>
       <SubTitle>Create a one now.</SubTitle>
 
-      <SignInForm>
+      <SignInForm onSubmit={handleSubmit}>
         <FormInput
           handleChange={({ target }) => setDisplayName(target.value)}
           type='text'
           name='displayName'
           value={displayName}
           required
-          label='Email'
+          label='Display Name'
         />
 
         <FormInput
@@ -49,7 +77,7 @@ const SignUp = () => {
           name='password'
           value={cfPassword}
           required
-          label='Password'
+          label='Confirm Password'
           handleChange={({ target }) => setCFPassword(target.value)}
         />
 
