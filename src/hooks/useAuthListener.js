@@ -1,10 +1,15 @@
 import { useState, useEffect } from "react";
-import { auth, createUserProfile } from "../../services/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { onSnapshot } from "firebase/firestore";
+import { useSelector, useDispatch } from "react-redux";
+
+import { auth, createUserProfile } from "../services/firebase";
+import { SET_CURRENT_USER } from "../redux/user/user.slice";
 
 export const useAuthListener = () => {
-  const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('userAuth')));
+
+  const user = useSelector(({ user }) => user.currentUser);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const listener = onAuthStateChanged(auth, async userAuth => {
@@ -14,18 +19,18 @@ export const useAuthListener = () => {
 
         // this listener to receive the data and then set it to the current user state.
         onSnapshot(userRef, snapshot => {
-          setCurrentUser({
+          dispatch(SET_CURRENT_USER({
             id: snapshot.id,
             ...snapshot.data()
-          });
+          }))
         });
       } else {
         // set it to null from the state.
-        setCurrentUser(userAuth);
+        dispatch(SET_CURRENT_USER(user))
       }
     });
     return () => listener();
   }, [auth]);
 
-  return { currentUser }
+  return { user }
 }

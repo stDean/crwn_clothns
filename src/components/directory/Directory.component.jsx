@@ -3,7 +3,6 @@ import { DirectoryContainer } from "./directory.styles";
 import { sections } from "./sectondata";
 
 const Directory = () => {
-  console.log(sections);
   return (
     <DirectoryContainer>
       {
