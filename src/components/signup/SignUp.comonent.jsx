@@ -42,7 +42,7 @@ const SignUp = () => {
   return (
     <SignInContainer>
       <TitleText>I do not have an account</TitleText>
-      <SubTitle>Create a one now.</SubTitle>
+      <SubTitle>Create one now.</SubTitle>
 
       <SignInForm onSubmit={handleSubmit}>
         <FormInput
