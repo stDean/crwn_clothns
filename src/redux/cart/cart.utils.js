@@ -15,3 +15,22 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
   // else spread the items in the array then add the new cart item as an obj in the array with a quantity of 1
   return [...cartItems, { ...cartItemToAdd, quantity: 1 }]
 }
+
+// remove item from cart array
+export const removeItemFromCart = (cartItems, cartItemToRemove) => {
+  const existingItems = cartItems.find(cartItem => cartItem.id === cartItemToRemove.id);
+
+  // if the item exists and the quantity is 1, remove the item that the id === removed item id and return the array in which has item id !== removed id.
+  if (existingItems.quantity === 1) {
+    return cartItems.filter(
+      cartItem => cartItem.id !== cartItemToRemove.id
+    )
+  }
+
+  // else just reduce the quantity by 1
+  return cartItems.map(cartItem =>
+    cartItem.id === cartItemToRemove.id ?
+      { ...cartItem, quantity: cartItem.quantity - 1 } :
+      cartItem
+  )
+}

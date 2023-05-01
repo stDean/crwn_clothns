@@ -16,8 +16,8 @@ const Checkout = () => {
     <CheckOutContainer>
       <CheckOutHeader>
         {
-          checkOutHeader.map(item => (
-            <HeaderBlock>
+          checkOutHeader.map((item, idx) => (
+            <HeaderBlock key={idx}>
               <SpanText>{item}</SpanText>
             </HeaderBlock>
           ))

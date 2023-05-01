@@ -1,6 +1,6 @@
 import { createSlice, createSelector } from "@reduxjs/toolkit";
 
-import { addItemToCart } from "./cart.utils";
+import { addItemToCart, removeItemFromCart } from "./cart.utils";
 
 const initialState = {
   hidden: true,
@@ -16,6 +16,12 @@ export const CartSlice = createSlice({
     },
     ADD_CART_ITEM: (state, action) => {
       state.cartItems = addItemToCart(state.cartItems, action.payload)
+    },
+    REMOVE_CART_ITEM: (state, action) => {
+      state.cartItems = removeItemFromCart(state.cartItems, action.payload)
+    },
+    CLEAR_CART_ITEM: (state, action) => {
+      state.cartItems = state.cartItems.filter(cartItem => cartItem.id !== action.payload.id)
     }
   }
 });
@@ -35,6 +41,6 @@ export const selectCartTotal = createSelector(
   )
 )
 
-export const { TOGGLE_CART_HIDDEN, ADD_CART_ITEM } = CartSlice.actions;
+export const { TOGGLE_CART_HIDDEN, ADD_CART_ITEM, REMOVE_CART_ITEM, CLEAR_CART_ITEM } = CartSlice.actions;
 
 export default CartSlice.reducer;
