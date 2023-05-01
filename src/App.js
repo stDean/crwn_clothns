@@ -9,7 +9,6 @@ import { useAuthListener } from './/hooks/useAuthListener';
 function App() {
 
   const { user } = useAuthListener();
-  console.log(user);
 
   return (
     <>

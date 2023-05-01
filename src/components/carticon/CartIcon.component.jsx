@@ -1,16 +1,18 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { IconContainer, ItemCount, ShopIcon } from './carticon.styles';
-import { TOGGLE_CART_HIDDEN } from '../../redux/cart/cart.slice';
+import { TOGGLE_CART_HIDDEN, selectCartItemsCount } from '../../redux/cart/cart.slice';
 
 const CartIcon = () => {
 
   const dispatch = useDispatch();
+  const itemCount = useSelector(selectCartItemsCount);
+  console.log(itemCount);
 
   return (
     <IconContainer onClick={() => dispatch(TOGGLE_CART_HIDDEN())}>
       <ShopIcon />
-      <ItemCount>0</ItemCount>
+      <ItemCount>{itemCount}</ItemCount>
     </IconContainer>
   )
 }
