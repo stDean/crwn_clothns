@@ -28,7 +28,7 @@ const SignUp = () => {
       // save the user into the db and add the displayName as the otherProps passes
       createUserProfile(user, { displayName });
 
-      // on submit reset all in fo to an empty string
+      // on submit reset all form input to an empty string
       setCFPassword("");
       setDisplayName("");
       setEmail("");

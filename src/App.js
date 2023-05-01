@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 
 import { GlobalStyle } from './globalStyles';
 import { Header } from './components';
-import { AuthPage, HomePage, ShopPage } from './pages';
+import { AuthPage, CheckoutPage, HomePage, ShopPage } from './pages';
 import { useAuthListener } from './/hooks/useAuthListener';
 
 
@@ -21,6 +21,7 @@ function App() {
         <Route path='/signin' element={
           user ? <Navigate to="/" /> : <AuthPage />
         } />
+        <Route path='/checkout' element={<CheckoutPage />} />
       </Routes>
     </>
   );

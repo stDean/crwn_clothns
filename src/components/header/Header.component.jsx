@@ -5,11 +5,12 @@ import { HeaderContainer, LogoContainer, OptionsContainer, OptionsLink } from ".
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 import CartIcon from "../carticon/CartIcon.component";
 import { auth } from "../../services/firebase";
+import CartDropDown from "../cartdropdown/CartDropDown.component";
 
 const Header = () => {
 
-  const user = useSelector(({ user }) => user.currentUser)
-  console.log(user);
+  const user = useSelector(({ user }) => user.currentUser);
+  const hidden = useSelector(({ cart }) => cart.hidden);
 
   return (
     <HeaderContainer>
@@ -29,6 +30,10 @@ const Header = () => {
         }
         <CartIcon />
       </OptionsContainer>
+
+      {
+        hidden ? null : <CartDropDown />
+      }
     </HeaderContainer>
   )
 }
