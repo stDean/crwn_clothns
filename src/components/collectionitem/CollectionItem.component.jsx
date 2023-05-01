@@ -12,7 +12,7 @@ const CollectionItem = ({ item }) => {
   const dispatch = useDispatch();
 
   return (
-    <ItemContainer>
+    <ItemContainer className='collection-item'>
       <ImgContainer imageUrl={imageUrl} className="image" />
 
       <CollectionFooter>
