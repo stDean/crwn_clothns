@@ -2,13 +2,24 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 
 import { GlobalStyle } from './globalStyles';
 import { Header } from './components';
+// import { useEffect } from 'react';
+// import { useSelector } from 'react-redux';
+
 import { AuthPage, CheckoutPage, HomePage, ShopPage } from './pages';
-import { useAuthListener } from './/hooks/useAuthListener';
+import { useAuthListener } from './hooks/useAuthListener';
+// import { selectCollectionsForPreview } from './redux/shop/shop.slice';
+// import { addCollectionsAndDocuments } from './services/firebase';
 
 
 function App() {
 
   const { user } = useAuthListener();
+  // const collectionsArray = useSelector(selectCollectionsForPreview)
+
+  // useEffect(() => {
+  //   const collectionToAdd = collectionsArray.map(({ title, items }) => ({ title, items }))
+  //   // addCollectionsAndDocuments("collections", collectionToAdd)
+  // });
 
   return (
     <>

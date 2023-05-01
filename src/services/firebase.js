@@ -64,4 +64,47 @@ export const createUserProfile = async (userAuth, additionalData) => {
 
 /* ============================================================================================ */
 
+// Adding the SHOP Json to our firebase one time only
+export const addCollectionsAndDocuments = async (collectionKey, objectsToAdd) => {
+  // create a collection in fire store with the name of argument passed
+  const collectionRef = collection(db, collectionKey)
+
+  const batch = writeBatch(db);
+
+  // for each of the the content in the array to add to the collection create a document in the collection
+  objectsToAdd.forEach(obj => {
+    const newDocRef = doc(collectionRef)
+
+    // this takes the document ref and then the data to add
+    batch.set(newDocRef, obj)
+  });
+
+  // add all the writes to the db as a single unit
+  return await batch.commit();
+}
+
+/* ============================================================================================ */
+
+// Getting the SHOP collections from firebase and converting it from an object to an array then return the title , items, e.t.c.
+export const convertCollectionSnapshotToMap = collections => {
+  const transformedCollection = collections.docs.map(doc => {
+    const { title, items } = doc.data()
+
+    return {
+      routeName: encodeURI(title.toLowerCase()),
+      id: doc.id,
+      title,
+      items
+    }
+  });
+
+  // converting the array of collection back to an object.
+  // e.g {hats: collections, sneakers: collection}
+  return transformedCollection.reduce((accumulator, collection) => {
+    accumulator[collection.title.toLowerCase()] = collection;
+    return accumulator;
+  }, {});
+
+}
+
 export default app;

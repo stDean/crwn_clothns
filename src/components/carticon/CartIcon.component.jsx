@@ -7,7 +7,6 @@ const CartIcon = () => {
 
   const dispatch = useDispatch();
   const itemCount = useSelector(selectCartItemsCount);
-  console.log(itemCount);
 
   return (
     <IconContainer onClick={() => dispatch(TOGGLE_CART_HIDDEN())}>
