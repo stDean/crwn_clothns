@@ -26,6 +26,13 @@ export const selectCartItemsCount = createSelector(
   [selectCartItems], cartItems => (
     cartItems?.reduce((accumulatedValue, cartItem) => accumulatedValue + cartItem.quantity, 0)
   )
+);
+
+// from the cartItem, get the sum total of the price in the cart by summing the accumulatedValue and the product of cartItem quantity and price.
+export const selectCartTotal = createSelector(
+  [selectCartItems], cartItems => (
+    cartItems.reduce((accumulatedQuantity, cartItem) => accumulatedQuantity + (cartItem.quantity * cartItem.price), 0)
+  )
 )
 
 export const { TOGGLE_CART_HIDDEN, ADD_CART_ITEM } = CartSlice.actions;

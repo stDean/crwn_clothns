@@ -4,3 +4,4 @@ export { default as CollectionOverview } from "./collectionoverview/CollectionOv
 export { default as CollectionItem } from "./collectionitem/CollectionItem.component";
 export { default as SignIn } from "./signin/SignIn.component";
 export { default as SignUp } from "./signup/SignUp.comonent";
+export { default as CheckOutItem } from "./checkoutitem/CheckOutItem.component";
