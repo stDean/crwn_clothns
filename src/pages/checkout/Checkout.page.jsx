@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { selectCartItems, selectCartTotal } from "../../redux/cart/cart.slice";
 
 import {
-  CheckOutContainer, CheckOutHeader, HeaderBlock, SpanText, Total, TotalText
+  CheckOutContainer, CheckOutHeader, HeaderBlock, SpanText, Total, TotalText, EmptyText
 } from "./checkout.styles";
 import { CheckOutItem } from "../../components";
 
@@ -26,9 +26,13 @@ const Checkout = () => {
 
       {
         // map through all ele in the cart and render the checkout items
-        cartItems.map(cartItem => (
-          <CheckOutItem key={cartItem.id} item={cartItem} />
-        ))
+        cartItems.length ? (
+          cartItems.map(cartItem => (
+            <CheckOutItem key={cartItem.id} item={cartItem} />
+          ))
+        ) : (
+          <EmptyText>Your Cart is Empty <a href="/shop">SHOP NOW</a></EmptyText>
+        )
       }
 
       <Total>

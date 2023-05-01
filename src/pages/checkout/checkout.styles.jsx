@@ -36,3 +36,16 @@ export const Total = styled.div`
 `;
 
 export const TotalText = styled.span``;
+
+export const EmptyText = styled.span`
+  margin-top: 40px;
+  font-size: 32px;
+
+  a {
+    font-weight: 900;
+
+    &:hover {
+      border-bottom: 2px solid black;
+    }
+  }
+`;

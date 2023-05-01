@@ -1,16 +1,15 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import CustomButton from "../custombutton/CustomButton.component";
 import {
   CollectionFooter, ImgContainer, ItemContainer, NameText, PriceText
 } from "./collectionitem.styles";
-import { ADD_CART_ITEM, selectCartItems } from "../../redux/cart/cart.slice";
+import { ADD_CART_ITEM } from "../../redux/cart/cart.slice";
 
 const CollectionItem = ({ item }) => {
 
   const { name, imageUrl, price } = item;
   const dispatch = useDispatch();
-  const cartItem = useSelector(selectCartItems)
 
   return (
     <ItemContainer>
