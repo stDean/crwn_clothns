@@ -5,3 +5,4 @@ export { default as CollectionItem } from "./collectionitem/CollectionItem.compo
 export { default as SignIn } from "./signin/SignIn.component";
 export { default as SignUp } from "./signup/SignUp.comonent";
 export { default as CheckOutItem } from "./checkoutitem/CheckOutItem.component";
+export { default as Spinner } from "./Spinner/Spinner.component";
