@@ -1,7 +1,5 @@
 # CRWN-CLOTHINGS - Best e-commerce clothing website.
 
-![CRWN](https://i.ibb.co/c2qvxnb/Screenshot-2022-04-26-154218-cwn.png)
-
 ## 📣 Summary
 This application was built using React, redux toolkit for state management, styled component for styling, firebase for storing the shop data and authenticated user, authentication is also done with firebase. It is a multi page application that uses react-router-dom for routing between the pages. I also implemented the functional based component which enabled the use of hooks like useState, useEffect and i also created a custom hook which helps with getting the user data on authentication and sends it to the current user state.
 
