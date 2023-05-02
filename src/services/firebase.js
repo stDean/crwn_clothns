@@ -65,6 +65,7 @@ export const createUserProfile = async (userAuth, additionalData) => {
 /* ============================================================================================ */
 
 // Adding the SHOP Json to our firebase one time only
+// send data to db as array
 export const addCollectionsAndDocuments = async (collectionKey, objectsToAdd) => {
   // create a collection in fire store with the name of argument passed
   const collectionRef = collection(db, collectionKey)
@@ -85,7 +86,8 @@ export const addCollectionsAndDocuments = async (collectionKey, objectsToAdd) =>
 
 /* ============================================================================================ */
 
-// Getting the SHOP collections from firebase and converting it from an object to an array then return the title , items, e.t.c.
+// Getting the SHOP collections from firebase
+// then convert it to an object
 export const convertCollectionSnapshotToMap = collections => {
   const transformedCollection = collections.docs.map(doc => {
     const { title, items } = doc.data()

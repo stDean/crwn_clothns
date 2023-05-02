@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { selectCartItems, selectCartTotal } from "../../redux/cart/cart.slice";
 
 import {
-  CheckOutContainer, CheckOutHeader, HeaderBlock, SpanText, Total, TotalText, EmptyText
+  CheckOutContainer, CheckOutHeader, HeaderBlock, SpanText, Total, TotalText, EmptyText, PayButton
 } from "./checkout.styles";
 import { CheckOutItem } from "../../components";
 
@@ -10,7 +10,15 @@ const Checkout = () => {
 
   const cartItems = useSelector(selectCartItems);
   const subTotal = useSelector(selectCartTotal);
-  const checkOutHeader = ["Products", "Descriptions", "Quantity", "Price", "Remove"]
+  const checkOutHeader = ["Products", "Descriptions", "Quantity", "Price", "Remove"];
+
+  const sayThanks = () => {
+    if (cartItems.length) {
+      alert("Thanks for using this app!!");
+    } else {
+      return null
+    }
+  }
 
   return (
     <CheckOutContainer>
@@ -38,6 +46,10 @@ const Checkout = () => {
       <Total>
         <TotalText>Total: ${subTotal}</TotalText>
       </Total>
+
+      <PayButton onClick={sayThanks}>
+        Pay Now
+      </PayButton>
     </CheckOutContainer>
   )
 }

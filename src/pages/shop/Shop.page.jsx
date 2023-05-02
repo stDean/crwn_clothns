@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { onSnapshot, collection } from "firebase/firestore";
 
 import { CollectionOverview } from "../../components"
@@ -16,6 +16,8 @@ const Shop = () => {
 
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
+  const collectionData = useSelector(selectCollections);
+  console.log(collectionData);
 
   useEffect(() => {
     // get a reference to the collection in the db called collections

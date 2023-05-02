@@ -49,3 +49,16 @@ export const EmptyText = styled.span`
     }
   }
 `;
+
+export const PayButton = styled.button`
+  width: 200px;
+  height: 50px;
+  font-size: 20px;
+  font-weight: 600;
+  border-radius: 5px;
+  outline: none;
+
+  &:active {
+    transform: scale(.98);
+  }
+`;
