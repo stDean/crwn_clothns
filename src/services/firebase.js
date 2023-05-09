@@ -65,7 +65,6 @@ export const createUserProfile = async (userAuth, additionalData) => {
 /* ============================================================================================ */
 
 // Adding the SHOP Json to our firebase one time only
-// send data to db as array
 export const addCollectionsAndDocuments = async (collectionKey, objectsToAdd) => {
   // create a collection in fire store with the name of argument passed
   const collectionRef = collection(db, collectionKey)
