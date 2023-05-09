@@ -35,7 +35,7 @@ export const signInWithGoogle = () => signInWithPopup(auth, provider);
 export const createUserProfile = async (userAuth, additionalData) => {
   if (!userAuth) return;
 
-  // if userAuth create a document called users in it a file with userAuth uid
+  // if userAuth get the user from the collection of users in the db
   const usersRef = doc(db, `users/${userAuth.uid}`)
 
   // get the user info
@@ -58,7 +58,7 @@ export const createUserProfile = async (userAuth, additionalData) => {
     }
   }
 
-  // return the userRef
+  // return the userRef if the user exists
   return usersRef;
 }
 
